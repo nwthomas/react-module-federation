@@ -13,6 +13,7 @@ const prodConfig = {
     global: true,
   },
   output: {
+    publicPath: "/container/latest/",
     filename: "[name].[contenthash].js",
   },
   plugins: [
