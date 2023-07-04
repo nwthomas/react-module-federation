@@ -16,7 +16,7 @@ const devConfig = {
     filename: "main.js", // Specify the output bundle filename
   },
   devServer: {
-    port: 8081,
+    port: 8082,
     historyApiFallback: {
       index: "index.html",
     },
