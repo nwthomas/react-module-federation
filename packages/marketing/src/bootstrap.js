@@ -1,9 +1,10 @@
 import * as React from "react";
 
+import App from "./App";
 import ReactDOM from "react-dom";
 
 const mount = (element) => {
-  ReactDOM.render(<h1>Hi there!</h1>, element);
+  ReactDOM.render(<App />, element);
 };
 
 const rootElement = document.getElementById("marketing-dev-root");
