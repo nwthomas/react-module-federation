@@ -1,4 +1,6 @@
 const { merge } = require("webpack-merge");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const commonConfig = require("./webpack.common");
 
@@ -10,14 +12,14 @@ const devConfig = {
     global: true,
   },
   output: {
-    path: path.resolve(__dirname, "dist"), // Specify the output directory path
+    path: path.resolve(__dirname, "../dist"), // Specify the output directory path
     filename: "main.js", // Specify the output bundle filename
   },
   devServer: {
     port: 8081,
-  },
-  historyApiFallback: {
-    index: "index.html",
+    historyApiFallback: {
+      index: "index.html",
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
