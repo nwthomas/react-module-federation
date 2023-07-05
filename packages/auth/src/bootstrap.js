@@ -28,7 +28,7 @@ const mount = (element, options) => {
   };
 };
 
-const rootElement = document.getElementById("marketing-dev-root");
+const rootElement = document.getElementById("auth-dev-root");
 
 if (process.env.NODE_ENV === "development" && rootElement) {
   const history = createBrowserHistory();
