@@ -19,7 +19,6 @@ function App() {
       <StylesProvider generateClassName={generateClassName}>
         <BrowserRouter>
           <Switch>
-            <h1>A new test</h1>
             <Route exact path="/pricing" component={Pricing} />
             <Route path="/" component={Landing} />
           </Switch>
