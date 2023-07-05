@@ -18,7 +18,7 @@ function AuthApp({ onSignIn }) {
 
   const handleOnSignIn = React.useCallback(() => {
     onSignIn();
-    history.push("/");
+    history.push("/dashboard");
   }, [history, onSignIn]);
 
   React.useEffect(() => {
