@@ -1,13 +1,14 @@
 import * as React from "react";
 
+import { createBrowserHistory, createMemoryHistory } from "history";
+
 import App from "./App";
 import ReactDOM from "react-dom";
-import { createMemoryHistory } from "history";
 
 const mount = (element, options) => {
-  const { onNavigate } = options;
+  const { defaultHistory, onNavigate } = options;
 
-  const history = createMemoryHistory();
+  const history = defaultHistory || createMemoryHistory();
 
   if (onNavigate) {
     history.listen(onNavigate);
@@ -30,7 +31,9 @@ const mount = (element, options) => {
 const rootElement = document.getElementById("marketing-dev-root");
 
 if (process.env.NODE_ENV === "development" && rootElement) {
-  mount(rootElement, {});
+  const history = createBrowserHistory();
+
+  mount(rootElement, { defaultHistory: history });
 }
 
 export { mount };
