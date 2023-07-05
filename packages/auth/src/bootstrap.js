@@ -6,7 +6,7 @@ import App from "./App";
 import ReactDOM from "react-dom";
 
 const mount = (element, options) => {
-  const { defaultHistory, initialPath, onNavigate } = options;
+  const { defaultHistory, initialPath, onNavigate, onSignIn } = options;
 
   const history =
     defaultHistory ||
@@ -18,7 +18,7 @@ const mount = (element, options) => {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, element);
+  ReactDOM.render(<App history={history} onSignIn={onSignIn} />, element);
 
   return {
     onParentNavigate(location) {

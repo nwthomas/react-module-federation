@@ -17,14 +17,28 @@ const generateClassName = createGenerateClassName({
 });
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = React.useState(false);
+
+  const handleOnSignedIn = React.useCallback(() => {
+    setIsSignedIn(true);
+  }, []);
+
+  const handleOnSignOut = () => {
+    setIsSignedIn(false);
+  };
+
   return (
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
-        <Header />
+        <Header onSignOut={handleOnSignOut} signedIn={isSignedIn} />
         <React.Suspense fallback={<Progress />}>
           <Switch>
-            <Route path="/auth" component={AuthLazyApp} />
-            <Route path="/" component={MarketingLazyApp} />
+            <Route path="/auth">
+              <AuthLazyApp onSignIn={handleOnSignedIn} />
+            </Route>
+            <Route path="/">
+              <MarketingLazyApp />
+            </Route>
           </Switch>
         </React.Suspense>
       </StylesProvider>

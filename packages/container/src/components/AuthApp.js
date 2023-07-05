@@ -3,7 +3,7 @@ import * as React from "react";
 import { mount } from "auth/AuthApp";
 import { useHistory } from "react-router-dom";
 
-function AuthApp() {
+function AuthApp({ onSignIn }) {
   const ref = React.useRef(null);
   const history = useHistory();
 
@@ -16,16 +16,22 @@ function AuthApp() {
     }
   }, []);
 
+  const handleOnSignIn = React.useCallback(() => {
+    onSignIn();
+    history.push("/");
+  }, [history, onSignIn]);
+
   React.useEffect(() => {
     const options = mount(ref.current, {
       onNavigate: handleOnNavigate,
       initialPath: history.location.pathname,
+      onSignIn: handleOnSignIn,
     });
 
     const { onParentNavigate } = options;
 
     history.listen(onParentNavigate);
-  }, [handleOnNavigate]);
+  }, [handleOnNavigate, onSignIn]);
 
   return <div ref={ref} />;
 }
