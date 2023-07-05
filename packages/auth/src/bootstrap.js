@@ -6,9 +6,13 @@ import App from "./App";
 import ReactDOM from "react-dom";
 
 const mount = (element, options) => {
-  const { defaultHistory, onNavigate } = options;
+  const { defaultHistory, initialPath, onNavigate } = options;
 
-  const history = defaultHistory || createMemoryHistory();
+  const history =
+    defaultHistory ||
+    createMemoryHistory({
+      initialEntries: [initialPath],
+    });
 
   if (onNavigate) {
     history.listen(onNavigate);
