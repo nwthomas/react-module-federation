@@ -28,7 +28,10 @@ const devConfig = {
       remotes: {
         marketing: "marketing@http://localhost:8082/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true },
+        "react-dom": { singleton: true },
+      },
     }),
   ],
 };

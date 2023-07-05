@@ -11,7 +11,6 @@ function App() {
     <div>
       <StylesProvider>
         <BrowserRouter>
-          <h1>Test</h1>
           <Route exact path="/pricing" component={Pricing} />
           <Route path="/" component={Landing} />
         </BrowserRouter>
