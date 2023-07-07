@@ -63,6 +63,8 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  console.log("Running");
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -77,7 +79,7 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">Testing</Section>
+          <Section title="Step One">Test Nathan Thomas</Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>

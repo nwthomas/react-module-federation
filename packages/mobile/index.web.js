@@ -1,1 +1,1 @@
-import('./boostrap.js');
+import("./bootstrap.js");
