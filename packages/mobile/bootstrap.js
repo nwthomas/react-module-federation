@@ -13,7 +13,7 @@ const mount = element => {
   });
 };
 
-const rootElement = document.getElementById("moible-dev-root");
+const rootElement = document.getElementById("mobile-dev-root");
 
 if (process.env.NODE_ENV === "development" && rootElement) {
   mount(rootElement);
