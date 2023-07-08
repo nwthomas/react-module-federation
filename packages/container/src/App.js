@@ -12,6 +12,7 @@ import Progress from "./components/Progress";
 const MarketingLazyApp = React.lazy(() => import("./components/MarketingApp"));
 const AuthLazyApp = React.lazy(() => import("./components/AuthApp"));
 const DashboardLazyApp = React.lazy(() => import("./components/DashboardApp"));
+const MobileLazyApp = React.lazy(() => import("./components/MobileApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
@@ -34,6 +35,9 @@ function App() {
         <Header onSignOut={handleOnSignOut} signedIn={isSignedIn} />
         <React.Suspense fallback={<Progress />}>
           <Switch>
+            <Route path="/mobile">
+              <MobileLazyApp />
+            </Route>
             <Route path="/auth">
               <AuthLazyApp onSignIn={handleOnSignedIn} />
             </Route>

@@ -1,28 +1,29 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from "react-router-dom";
+
+import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
+import React from "react";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  '@global': {
+  "@global": {
     ul: {
       margin: 0,
       padding: 0,
-      listStyle: 'none',
+      listStyle: "none",
     },
     a: {
-      textDecoration: 'none',
+      textDecoration: "none",
     },
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   toolbar: {
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   link: {
     margin: theme.spacing(1, 1.5),
@@ -32,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
   cardHeader: {
     backgroundColor:
-      theme.palette.type === 'light'
+      theme.palette.type === "light"
         ? theme.palette.grey[200]
         : theme.palette.grey[700],
   },
   cardPricing: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'baseline',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "baseline",
     marginBottom: theme.spacing(2),
   },
   footer: {
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(6),
       paddingBottom: theme.spacing(6),
     },
@@ -56,11 +57,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ signedIn, onSignOut }) {
   const classes = useStyles();
+  const history = useHistory();
 
   const onClick = () => {
     if (signedIn && onSignOut) {
       onSignOut();
     }
+  };
+
+  const handleRouteToMobileApp = () => {
+    history.push("/mobile");
   };
 
   return (
@@ -86,10 +92,20 @@ export default function Header({ signedIn, onSignOut }) {
             variant="outlined"
             className={classes.link}
             component={RouterLink}
-            to={signedIn ? '/' : '/auth/signin'}
+            to="/mobile"
+            onClick={handleRouteToMobileApp}
+          >
+            Mobile App
+          </Button>
+          <Button
+            color="primary"
+            variant="outlined"
+            className={classes.link}
+            component={RouterLink}
+            to={signedIn ? "/" : "/auth/signin"}
             onClick={onClick}
           >
-            {signedIn ? 'Logout' : 'Login'}
+            {signedIn ? "Logout" : "Login"}
           </Button>
         </Toolbar>
       </AppBar>
