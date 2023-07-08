@@ -15,10 +15,10 @@ const devConfig = {
   output: {
     path: path.resolve(__dirname, "../dist"), // Specify the output directory path
     filename: "main.js", // Specify the output bundle filename
-    publicPath: "http://localhost:8081/",
+    publicPath: "http://localhost:8080/",
   },
   devServer: {
-    port: 8081,
+    port: 8080,
     historyApiFallback: {
       index: "/index.html",
     },
